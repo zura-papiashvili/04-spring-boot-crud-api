@@ -56,41 +56,6 @@ public class StudentRestController {
 
     // add an exception handler using @ExceptionHandler
 
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorException> handleException(StudentNotFoundException exc) {
-
-        // create a StudentErrorException
-
-        StudentErrorException error = new StudentErrorException();
-
-        error.setStatus(404);
-        error.setMessage(exc.getMessage());
-        error.setTimeStamp(System.currentTimeMillis());
-
-        // return ResponseEntity
-
-        return new ResponseEntity<>(error, org.springframework.http.HttpStatus.NOT_FOUND);
-    }
-
-    // add another exception handler to catch any exception (catch all)
-
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorException> handleException(Exception exc) {
-
-        // create a StudentErrorException
-
-        StudentErrorException error = new StudentErrorException();
-
-        error.setStatus(400);
-        error.setMessage(exc.getMessage());
-        error.setTimeStamp(System.currentTimeMillis());
-
-        // return ResponseEntity
-
-        return new ResponseEntity<>(error, org.springframework.http.HttpStatus.BAD_REQUEST);
-
-    }
-
     // define endpoint for "/students" - add student
 
     // define endpoint for "/students" - update student
